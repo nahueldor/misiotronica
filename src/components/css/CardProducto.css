@@ -1,0 +1,17 @@
+.cardProducto {
+  cursor: pointer;
+}
+
+.cardProducto img {
+  height: 200px;
+}
+
+.cardProducto .card-body {
+  height: 115px;
+}
+
+.cardProducto:hover {
+  box-shadow: 0 0 15px #24010179;
+  transform: scale(1.02);
+  border-color: #405f15d5;
+}

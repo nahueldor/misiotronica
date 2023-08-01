@@ -1,0 +1,25 @@
+.nav-link-lateral{
+
+    color: #e4e2e2
+}
+
+.nav-link-lateral:hover{
+
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link.active{
+
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+.logo{
+
+    height: 32px;
+}
+
+.container_lateral_menu{
+
+    width: 250px !important;
+}

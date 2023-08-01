@@ -1,0 +1,58 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.5rem;
+  background-color: #92c250;
+  color: white;
+  border: none;
+  padding: 10px;
+  z-index: 1;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.little_card img {
+  height: 16vw;
+  width: 16vw;
+  border-radius: 50%;
+}
+
+.little_card img:hover {
+  border-radius: 25%;
+}
+
+.little_card:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 990px) {
+  .carousel {
+    height: 30vw;
+  }
+
+  .prev,
+  .next {
+    top: 90%;
+    transform: translateY(-90%);
+  }
+}

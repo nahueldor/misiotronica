@@ -1,0 +1,18 @@
+.form-check-input-success:hover {
+  cursor: pointer;
+}
+
+.form-check-input-success:checked {
+  background-color: #93c54b;
+  border-color: #93c54b;
+}
+
+.btn-green-light {
+  background-color: #acc28d;
+  border-color: #acc28d;
+}
+
+.btn-green-light:hover {
+  background-color: #96ac78;
+  border-color: #96ac78;
+}
