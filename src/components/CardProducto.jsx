@@ -8,7 +8,7 @@ export function CardProducto({ product }) {
 
   return (
     <article className="col-sm-12 	col-md-6 	col-lg-4 	col-xl-4 mb-3">
-      <Link to={`/sales/buy/${product.id}`} style={{ textDecoration: "none" }} target="_blank">
+      <Link to={`/sales/buy/${product.id}`} style={{ textDecoration: "none" }}>
         <div className="card bg-success cardProducto">
           <img
             className="card-img-top"

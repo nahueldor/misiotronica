@@ -1,0 +1,19 @@
+.img_cart {
+  height: 12vw;
+}
+
+.bg-success-light{
+
+    background-color: #acd274;
+}
+
+@media screen and (max-width: 990px) {
+  .img_cart {
+    height: 25vh;
+    width: 20vw;
+  }
+
+  .cart-body h4 {
+    font-size: 16px;
+  }
+}

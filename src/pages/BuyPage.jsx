@@ -1,11 +1,17 @@
 import { useParams, Navigate } from "react-router-dom";
 import { productList } from "../assets/js/productList";
+
+import { useCart} from "../context/CartContext"
+
 import freeShipping from "../assets/img/freeShipping.png";
 
 export function BuyPage() {
   const { id } = useParams();
+  const { addToCart } = useCart();
+
   let product;
 
+  //Para obtener el producto o devolver a la pagina de inexistente
   if (productList.length > id && id >= 0) {
     product = productList[id];
   } else {
@@ -50,7 +56,7 @@ export function BuyPage() {
               <p className="text-muted">
                 Disponibilidad: <span className="text-success">En Stock</span>
               </p>
-              <button className="btn btn-success">Comprar</button>
+              <button className="btn btn-success" onClick={() => addToCart(product)}>Comprar</button>
             </div>
           ) : (
             <div>

@@ -11,7 +11,7 @@ export function CardProductoList({ filteredArray }) {
         </div>
       ) : (
         <h2 className="text-center">
-          Lo sentimos, no hay resultados que coincidan con tu búsqueda. 😒
+          Lo sentimos, no hay resultados que coincidan con tu búsqueda. 🤯
         </h2>
       )}
     </div>
