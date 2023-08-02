@@ -1,7 +1,7 @@
 import { useParams, Navigate } from "react-router-dom";
 import { productList } from "../assets/js/productList";
 
-import { useCart} from "../context/CartContext"
+import { useCart } from "../context/CartContext";
 
 import freeShipping from "../assets/img/freeShipping.png";
 
@@ -38,6 +38,7 @@ export function BuyPage() {
             ${product.precio.toLocaleString("es-AR")}
           </h2>
 
+          {/* Mostrar el logo de camioncito, si el envio es gratis */}
           {product.envioFree ? (
             <div className="my-3">
               <img
@@ -51,12 +52,18 @@ export function BuyPage() {
             <div></div>
           )}
 
+          {/* Habilitar y deshabilitar botón de compra, dependiendo del Stock */}
           {product.isStock ? (
             <div>
               <p className="text-muted">
                 Disponibilidad: <span className="text-success">En Stock</span>
               </p>
-              <button className="btn btn-success" onClick={() => addToCart(product)}>Comprar</button>
+              <button
+                className="btn btn-success"
+                onClick={() => addToCart(product)}
+              >
+                Comprar
+              </button>
             </div>
           ) : (
             <div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export function SearchInput({ onSearch }) {
+  // Estado local para almacenar los términos de búsqueda
   const [searchTerm, setSearchTerm] = useState({
     buscador: "",
     categoria: "",
@@ -12,9 +13,13 @@ export function SearchInput({ onSearch }) {
     envioFree: false,
     stock: false,
   });
+
   const { handleSubmit } = useForm();
 
+  // Manejador para cambios en los campos de búsqueda
   const handleChange = (event) => {
+    /* Obtenemos los selectores de categoría para limpiar 
+    el valor "-- Ninguno --" cuando se seleccione */
     let categoriaSelector = document.getElementById("categoria");
     let categoriaSelectorSmall = document.getElementById("categoria_small");
 
@@ -26,6 +31,7 @@ export function SearchInput({ onSearch }) {
       categoriaSelectorSmall.value = "";
     }
 
+    // Actualizamos el estado según el tipo de campo
     if (event.target.name === "envioFree" || event.target.name === "stock") {
       setSearchTerm({
         ...searchTerm,
@@ -39,10 +45,12 @@ export function SearchInput({ onSearch }) {
     }
   };
 
+  // Manejador para el envío del formulario
   const onSubmit = () => {
     onSearch(searchTerm);
   };
 
+  // Manejador para limpiar el formulario y los filtros
   const onReset = () => {
     let clean = {
       ...searchTerm,
@@ -64,6 +72,7 @@ export function SearchInput({ onSearch }) {
     <aside className="card container border-success pb-3">
       <div className="row">
         <form id="filterForm" onSubmit={handleSubmit(onSubmit)}>
+          {/* Campos de búsqueda para pantallas grandes */}
           <fieldset className="form-group d-none d-lg-block">
             <div className="col-12 mt-2">
               <legend className="mt-2">Buscar</legend>
@@ -144,6 +153,8 @@ export function SearchInput({ onSearch }) {
               </div>
             </div>
           </fieldset>
+
+          {/* Campos de búsqueda para pantallas pequeñas */}
           <fieldset className="form-group d-block d-lg-none row">
             <h4 className="col-6 d-inline-flex mt-4">Buscar</h4>
             <h4 className="col-6 d-inline-flex mt-4">Categoría</h4>
@@ -228,6 +239,8 @@ export function SearchInput({ onSearch }) {
               </div>
             </div>
           </fieldset>
+
+          {/* Botones para filtrar y limpiar */}
           <div className="btn-group d-flex justify-content-center">
             <button type="submit" className="btn btn-lg btn-success mt-3">
               Filtrar

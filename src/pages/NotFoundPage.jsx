@@ -6,8 +6,7 @@ export function NotFoundPage() {
       <h1>404 Not Found 😭</h1>
       <h4>Pagina no encontrada</h4>
       <div className="d-flex justify-content-center mt-5 mb-3">
-        
-        <img src={comp} alt="Gato girando" style={{ height: 250 }} />
+        <img src={comp} alt="Computadora 404" style={{ height: 250 }} />
       </div>
       <Link className="btn btn-success" to={"/"}>
         Volver al Inicio

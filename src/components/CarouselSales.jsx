@@ -1,33 +1,36 @@
 import React, { useState } from "react";
 import { productList } from "../assets/js/productList";
-import "./css/CarouselSales.css"; // Importa tu archivo de estilos CSS para el carrusel
+import "./css/CarouselSales.css";
 import { Link } from "react-router-dom";
 
 export function CarouselSales() {
-  console.log(productList.length - 9, productList.length - 1);
-
+  // Obtenemos las últimas 8 imágenes del producto y mapeamos sus datos
   const images = productList
+    .slice(productList.length - 8, productList.length)
     .map((producto) => ({
       id: producto.id,
       imagen: producto.imagen,
-    }))
-    .slice(productList.length - 8, productList.length);
+    }));
 
   const imagesPerSlide = 4; // Número de imágenes por diapositiva
   const [activeSlide, setActiveSlide] = useState(0);
 
+  // Índices de inicio y fin del grupo de imágenes visible en el carrusel
   const startImageIndex = activeSlide;
   const endImageIndex = (activeSlide + imagesPerSlide) % images.length;
 
+  // Determinamos qué imágenes se mostrarán en el carrusel según los índices
   const visibleImages =
     startImageIndex <= endImageIndex
       ? images.slice(startImageIndex, endImageIndex)
       : [...images.slice(startImageIndex), ...images.slice(0, endImageIndex)];
 
+  // Función para avanzar al siguiente grupo de imágenes en el carrusel
   const goToNextSlide = () => {
     setActiveSlide((activeSlide + 1) % images.length);
   };
 
+  // Función para retroceder al grupo de imágenes anterior en el carrusel
   const goToPrevSlide = () => {
     setActiveSlide((activeSlide - 1 + images.length) % images.length);
   };
