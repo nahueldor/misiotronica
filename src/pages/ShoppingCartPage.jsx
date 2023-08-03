@@ -1,10 +1,16 @@
 import { CartInProduct } from "../components/CartInProduct";
 import { useCart } from "../context/CartContext";
+import { useEffect } from "react";
 
 export function ShoppingCartPage() {
   /* Obtener los elementos del carrito, la función para eliminar productos 
   y el total del precio desde el contexto */
   const { cartItems, removeFromCart, getTotalPrice } = useCart();
+
+  // Guardar el carrito en localStorage cada vez que cambie
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <div className="container">
@@ -21,7 +27,7 @@ export function ShoppingCartPage() {
           ))}
 
           {/* Mostrar el total del precio del carrito */}
-          <h2 className="card-title my-5">
+          <h2 className="card-title my-5" style={{ paddingBottom: "10%" }}>
             Total: ${getTotalPrice().toLocaleString("es-AR")}
           </h2>
         </div>

@@ -10,8 +10,10 @@ export function useCart() {
 
 // Proveedor del carrito que contiene el estado y las funciones relacionadas con el carrito
 export function CartProvider({ children }) {
+  const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
   // Estado local para almacenar los elementos del carrito
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(storedCartItems);
 
   // Función para agregar un producto al carrito
   const addToCart = (product) => {
@@ -20,15 +22,26 @@ export function CartProvider({ children }) {
 
     // Si el producto no está en el carrito, agregarlo
     if (!isProductInCart) {
-      setCartItems((prevCartItems) => [...prevCartItems, product]);
+      setCartItems((prevCartItems) => {
+        const updatedCartItems = [...prevCartItems, product];
+
+        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+        return updatedCartItems;
+      });
     }
   };
 
   // Función para eliminar un producto del carrito
   const removeFromCart = (productId) => {
-    setCartItems((prevCartItems) =>
-      prevCartItems.filter((item) => item.id !== productId)
-    );
+    setCartItems((prevCartItems) => {
+      const updatedCartItems = prevCartItems.filter(
+        (item) => item.id !== productId
+      );
+
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+
+      return updatedCartItems;
+    });
   };
 
   // Función para obtener el precio total de todos los productos en el carrito
