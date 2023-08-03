@@ -22,7 +22,7 @@ function App() {
       <Nav />
       <ScrollToTop />
 
-      <div style={{ minHeight: "100%" }}>
+      <div style={{ minHeight: "100vh" }}>
         <CartProvider>
           <Routes>
             <Route path="" element={<HomePage />} />
