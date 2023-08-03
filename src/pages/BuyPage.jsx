@@ -1,4 +1,4 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { productList } from "../assets/js/productList";
 
 import { useCart } from "../context/CartContext";
@@ -58,12 +58,15 @@ export function BuyPage() {
               <p className="text-muted">
                 Disponibilidad: <span className="text-success">En Stock</span>
               </p>
-              <button
+
+              <Link
                 className="btn btn-success"
+                to={`/cart`}
+                style={{ textDecoration: "none" }}
                 onClick={() => addToCart(product)}
               >
                 Comprar
-              </button>
+              </Link>
             </div>
           ) : (
             <div>
